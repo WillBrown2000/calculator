@@ -23,6 +23,13 @@ class App extends Component {
             this.calculate(button, this.state.displayedValue)
           }
 
+          else if (this.containsFirstOperandOnly()) {
+            this.setState({
+              displayedValue: this.state.entries[0]
+            })
+
+          }
+
           else {
             return //do nothing this is not a valid operation
           }
@@ -65,7 +72,6 @@ class App extends Component {
             this.setState({
               displayedValue: button,
               newEntry: true,
-              firstEntryMade: true,
             })
           }
 
@@ -188,9 +194,21 @@ class App extends Component {
     };
 
     backspace = () => {
+
+      // clear current entry, if entry is clear, delete current operand
+
+      console.log(this.state)
+
+      if (this.state.displayedValue === '' && this.isEntriesFull()) {
+        let temp = this.state.entries.slice(0,1)
+        this.setState({
+          entries: temp,
+        })
+      } else {
         this.setState({
             displayedValue: '',
         })
+      }
     };
 
     render() {
