@@ -36,10 +36,10 @@ class App extends Component {
 
         }
 
-        else if (button === '.' && this.state.newEntry === false){
-
+        else if (button === '.'){
+          let value = this.state.displayedValue === '-' ? '-0.' : '0.'
           this.setState({
-            displayedValue: '0.',
+            displayedValue: value,
             newEntry: true,
             firstEntryMade: true,
 
@@ -57,6 +57,8 @@ class App extends Component {
         // handle + and - and edge cases
         else if (button === "+" || button === "-") {
 
+          let temp = []
+
           if (this.state.firstEntryMade === true &&  // user is repeatedly hitting the + or - button and an inital entry has been made
             this.state.newEntry === false &&
             this.isEntriesFull()) {
@@ -66,7 +68,6 @@ class App extends Component {
 
             return
           }
-          let temp = []
           console.log('store:',this.state.entries, 'display:',this.state.displayedValue)
           if (this.state.firstEntryMade === false && button === '-') { //allow negative numbers as first entry if not previous entries
             this.setState({
@@ -74,6 +75,9 @@ class App extends Component {
               newEntry: true,
             })
           }
+
+          else if (this.state.firstEntryMade === false && button === '+') return // ignore plus as a first entry
+
 
           else if (this.isEntriesEmpty()) {
             temp.push(this.state.displayedValue)
@@ -139,7 +143,8 @@ class App extends Component {
       let firstNum = operationArray[0]
       let operator = operationArray[1]
       let secondNum = operationArray[2]
-      let regExTestForNum = /^-?[0-9]\d*(\.\d+)?$/
+      let regExTestForNum = /-?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?/ // match all numbers and scientic expressions
+
 
       return regExTestForNum.test(firstNum) &&
              regExTestForNum.test(secondNum) &&
@@ -170,6 +175,10 @@ class App extends Component {
         } else {
           console.log('there was a problem with your expression.  Clear inputs and try again')
           console.log(expression)
+          this.setState({
+            entries: [],
+            displayedValue: 'error'
+          })
           return
         }
 
