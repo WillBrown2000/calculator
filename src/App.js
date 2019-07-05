@@ -8,8 +8,8 @@ class App extends Component {
         super();
 
         this.state = {
-            result: "0"
-
+            displayedValue: "0",
+            currentValue: ""
         }
     }
 
@@ -27,31 +27,39 @@ class App extends Component {
         }
 
         else {
+          if (this.state.displayedValue === "0") {
             this.setState({
-                result: this.state.result + button
+                displayedValue: button
             })
+          } else {
+
+            this.setState({
+                displayedValue: this.state.displayedValue + button
+            })
+
+          }
         }
     };
 
 
     calculate = () => {
-        var checkResult = ''
-        if(this.state.result.includes('--')){
-            checkResult = this.state.result.replace('--','+')
+        var checkdisplayedValue = ''
+        if(this.state.displayedValue.includes('--')){
+            checkdisplayedValue = this.state.displayedValue.replace('--','+')
         }
 
         else {
-            checkResult = this.state.result
+            checkdisplayedValue = this.state.displayedValue
         }
 
         try {
             this.setState({
                 // eslint-disable-next-line
-                result: (eval(checkResult) || "" ) + ""
+                displayedValue: (eval(checkdisplayedValue) || "" ) + ""
             })
         } catch (e) {
             this.setState({
-                result: "error"
+                displayedValue: "error"
             })
 
         }
@@ -59,22 +67,28 @@ class App extends Component {
 
     reset = () => {
         this.setState({
-            result: "0"
+            displayedValue: "0"
         })
     };
 
     backspace = () => {
+      if (this.state.displayedValue.slice(0, -1) === "") {
         this.setState({
-            result: this.state.result.slice(0, -1)
+            displayedValue: "0"
         })
+      } else {
+        this.setState({
+            displayedValue: this.state.displayedValue.slice(0, -1)
+        })
+      }
     };
 
     render() {
         return (
             <div>
                 <div className="calculator-body">
-                    <h1>Simple Calculator</h1>
-                    <ResultComponent result={this.state.result}/>
+                    <h1>InfoBlox Calculator</h1>
+                    <ResultComponent displayedValue={this.state.displayedValue}/>
                     <KeyPadComponent onClick={this.onClick}/>
                 </div>
             </div>
