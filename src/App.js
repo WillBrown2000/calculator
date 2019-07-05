@@ -9,6 +9,7 @@ class App extends Component {
 
         this.state = {
             result: ""
+
         }
     }
 
@@ -58,7 +59,7 @@ class App extends Component {
 
     reset = () => {
         this.setState({
-            result: ""
+            result: "0"
         })
     };
 
