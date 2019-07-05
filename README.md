@@ -66,3 +66,13 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+###
+
++ = will add the current value on the screen to itself
+
+continually pressing equals does nothing
+
+TODO:
+
+Implement shrinking view pane as numbers get too big
