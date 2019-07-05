@@ -68,7 +68,7 @@ class App extends Component {
           }
           let temp = []
           console.log('store:',this.state.entries, 'display:',this.state.displayedValue)
-          if (this.state.firstEntryMade === false ) { //allow negative numbers as first entry if not previous entries
+          if (this.state.firstEntryMade === false && button === '-') { //allow negative numbers as first entry if not previous entries
             this.setState({
               displayedValue: button,
               newEntry: true,
