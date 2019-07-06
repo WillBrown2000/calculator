@@ -106,3 +106,4 @@ The calculator can handle and display values up to and including scientific numb
 - ~Implement shrinking view pane as numbers get too big~
 - implement wrap around when text grows too large
 - add script to ec2 startup that automatically starts the docker image on startup
+- fix bug where decimals trigger erroneous text shrinking.
