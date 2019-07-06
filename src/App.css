@@ -10,6 +10,27 @@
 
 }
 
+.result-small {
+  height: 60px;
+  background-color: #bbb;
+  width: 100%;
+}
+
+.result-small p {
+  font-size: 30px;
+  margin: 5px;
+}
+
+.result-very-small {
+  height: 60px;
+  background-color: #bbb;
+  width: 100%;
+}
+
+.result-very-small p {
+  font-size: 20px;
+  margin: 5px;
+}
 .calculator-body {
   max-width: 400px;
   margin: auto;
