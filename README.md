@@ -4,7 +4,9 @@ Clone the repository from:
 
 `https://github.com/WillBrown2000/calculator.git`
 
-Follow the instructions below to get started.
+If you're working with a clean pull, run `npm install` before getting started.
+
+Follow the instructions below.
 
 ### Dependencies
 
