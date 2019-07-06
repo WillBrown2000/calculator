@@ -1,4 +1,71 @@
-### Usage
+## Installation
+
+Clone the repository from:
+
+`https://github.com/WillBrown2000/calculator.git`
+
+Follow the instructions below to get started.
+
+### Dependencies
+
+- Docker (version 18.09.0)
+- Node (version 10.11.0)
+- NPM (version 6.4.1)
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Use this for quick starts, hot reload while developing, and local development
+
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.<br>
+
+### `npm run build`
+
+Use this option if intending to deploy via AWS S3.  After the build is complete, copy all files into the relevant bucket and make them public.
+
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+
+## Deployments
+
+In the root directory run:
+
+`sudo docker build -f Dockerfile -t calculator:latest .`
+
+Note: this assumes you are using a mac or linux based system.
+
+Use this to build the docker image locally on your system.  If you're deploying to production, you'll need to push the image to:
+
+306008383179.dkr.ecr.us-east-1.amazonaws.com/infoblox-project:latest
+
+From there, pull the image onto the production site and run:
+
+`docker run -it -d -p 80:80 --rm calculator:latest`
+
+Note: This assumes you have kept the name calculator:latest, if not substitute whatever name you are using.
+
+After running this command docker exposes the calculator app on port 80 on the localhost.
+
+### Production Builds and Deployments
+
+The production build is located at: http://dockerized-calculator.infoblox-project.com/
+
+you'll need the required pem file to ssh in, see your system admin.
+
+## Usage
 
 This is a calculator designed only to allow `+` and `-` operators.
 
@@ -36,60 +103,4 @@ The calculator can handle and display values up to and including scientific numb
 
 - ~Implement shrinking view pane as numbers get too big~
 - implement wrap around when text grows too large
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### Dependencies
-
-- Docker (version 18.09.0)
-- Node (version 10.11.0)
-- NPM (version 6.4.1)
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Use this for quick starts, hot reload while developing, and local development
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-
-### `npm run build`
-
-Use this option if intending to deploy via AWS S3.  After the build is complete, copy all files into the relevant bucket and make them public.
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-
-### `sudo docker build -f Dockerfile -t calculator:latest .`
-
-Note: this assumes you are using a mac or linux based system.
-
-Use this to build the docker image locally on your system.  
-
-### `docker run -it -p 80:80 --rm calculator:latest`
-
-Note: this assumes you are using a mac or linux based system.
-
-Run after the docker build to see the docker run on your local system.  After running docker exposes the calculator app on port 80 on your localhost.
-
-### production Builds
-
-The dockerized production build is located at: http://dockerized-calculator.infoblox-project.com/
-
-you'll need the required pem file to ssh in, see your system admin.
-
-The S3 based production build can be found at:
-
-https://s3-calculator.infoblox-project.com/
+- add script to ec2 startup that automatically starts the docker image on startup
