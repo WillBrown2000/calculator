@@ -167,10 +167,19 @@ class App extends Component {
 
         let newEntries = []
         let expression = this.state.entries.slice(0)
+        let result
         expression.push(lastValue)
 
         if (this.isValidOperation(expression)) {
-          let result = eval(expression.join(''))
+          try {
+            result = eval(expression.join(''))
+          } catch (err) {
+            console.log(err)
+            this.setState({
+              entries: [],
+              displayedValue: 'error'
+            })
+          }
           newEntries.push(result)
         } else {
           console.log('there was a problem with your expression.  Clear inputs and try again')
