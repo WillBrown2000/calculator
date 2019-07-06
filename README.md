@@ -51,7 +51,7 @@ Note: this assumes you are using a mac or linux based system.
 
 Use this to build the docker image locally on your system.  If you're deploying to production, you'll need to push the image to:
 
-306008383179.dkr.ecr.us-east-1.amazonaws.com/infoblox-project:latest
+`306008383179.dkr.ecr.us-east-1.amazonaws.com/infoblox-project:latest`
 
 From there, pull the image onto the production site and run:
 
