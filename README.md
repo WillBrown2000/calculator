@@ -34,7 +34,8 @@ The calculator can handle and display values up to and including scientific numb
 
 ### TODO:
 
-Implement shrinking view pane as numbers get too big
+- ~Implement shrinking view pane as numbers get too big~
+- implement wrap around when text grows too large
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
