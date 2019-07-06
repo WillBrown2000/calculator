@@ -64,11 +64,9 @@ class App extends Component {
             this.isEntriesFull()) {
 
             this.setOperand(button)
-            console.log(this.state)
 
             return
           }
-          console.log('store:',this.state.entries, 'display:',this.state.displayedValue)
           if (this.state.firstEntryMade === false && button === '-') { //allow negative numbers as first entry if not previous entries
             this.setState({
               displayedValue: button,
@@ -94,7 +92,6 @@ class App extends Component {
           }
 
           else if (this.containsFirstOperandOnly()) {
-              console.log('first operand')
               temp = this.state.entries.slice(0)
               temp.push(button)
               this.setState({
@@ -132,8 +129,6 @@ class App extends Component {
     setOperand = (button) => {
       let temp = this.state.entries.slice(0,1)
       temp.push(button)
-      console.log(temp)
-
       this.setState({
         entries: temp,
       })
