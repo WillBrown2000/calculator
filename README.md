@@ -76,3 +76,37 @@ continually pressing equals does nothing
 TODO:
 
 Implement shrinking view pane as numbers get too big
+
+### Usage
+
+This is a calculator designed only to allow `+` and `-` operators.
+
+#### '=' operator
+
+If a valid expression has been entered it returns the resultant operation, if there is a previous sum and a user has backspaced it will return the previous sum, assuming a user has cleared out the previous expression operator.
+
+For example, if a user types 1 + 1 and '=' the calculator will return 2.
+
+If a user then types, '+' followed by '3', then presses 'CE' 2x, the screen will then go black (the user just deleted the 3 and the previous operator '+')
+
+At this time if a user presses equals, it will return the previous sum of 2.
+
+#### '+' operator
+
+Can only be used after a numerical entry or after a valid expression returning a result from a previous entry.  
+
+For example, pressing `+` initially will do nothing; however, `1 + 1 +` will return `2`.  Pressing `3 +` after that will return 5.  `1 + 1 =` will return 2.
+
+#### '-' operator
+
+If no initial entry has been made, the calculator assumes the user is attempting to enter a negative number to start.  For example, pressing `-` and `3` and `3` will display and be treated as `-33`.
+
+For all uses of `-` after an initial entry or operation, the calculator will assume the user is attempting to subtract from the previous value.
+
+#### operators in general
+
+operators perform the function a user would assume they do.  If a user continually presses an operator it will have no effect.  However, if a user presses the `+` operator while the `-` operator is in the buffer as the last entry, the calculator will replace the current operator with the previous operator.  For example, if a user presses `33 + + + - 44` the result will be -11.
+
+#### Values
+
+The calculator can handle and display values up to and including scientific numbers.  
