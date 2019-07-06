@@ -82,3 +82,13 @@ Use this to build the docker image locally on your system.
 Note: this assumes you are using a mac or linux based system.
 
 Run after the docker build to see the docker run on your local system.  After running docker exposes the calculator app on port 80 on your localhost.
+
+### production Builds
+
+The dockerized production build is located at: http://dockerized-calculator.infoblox-project.com/
+
+you'll need the required pem file to ssh in, see your system admin.
+
+The S3 based production build can be found at:
+
+https://s3-calculator.infoblox-project.com/
