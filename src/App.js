@@ -160,41 +160,44 @@ class App extends Component {
 
     calculate = (button, lastValue) => {
 
-        let newEntries = []
-        let expression = this.state.entries.slice(0)
-        let result
-        expression.push(lastValue)
+      let newEntries = []
+      let expression = this.state.entries.slice(0)
+      let result
+      expression.push(lastValue)
 
-        if (this.isValidOperation(expression)) {
-          try {
-            result = eval(expression.join(''))
-          } catch (err) {
-            console.log(err)
-            this.setState({
-              entries: [],
-              displayedValue: 'error'
-            })
-          }
-          newEntries.push(result)
-        } else {
-          console.log('there was a problem with your expression.  Clear inputs and try again')
-          console.log(expression)
+      if (this.isValidOperation(expression)) {
+        try {
+          result = eval(expression.join(''))
+        } catch (err) {
+          console.log(err)
           this.setState({
             entries: [],
             displayedValue: 'error'
           })
-          return
+          return err
         }
-
-        if (button !== '=') {
-          newEntries.push(button)
-        }
-
+        newEntries.push(result)
+      } else {
+        console.log('there was a problem with your expression.  Clear inputs and try again')
+        console.log(expression)
         this.setState({
-          entries: newEntries,
-          displayedValue: newEntries[0],
-          newEntry: false,
+          entries: [],
+          displayedValue: 'error'
         })
+        return
+      }
+
+      if (button !== '=') {
+        newEntries.push(button)
+      }
+
+      this.setState({
+        entries: newEntries,
+        displayedValue: newEntries[0],
+        newEntry: false,
+      })
+
+        return result //used for testing modules
     };
 
     reset = () => {
